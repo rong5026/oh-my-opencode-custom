@@ -1,4 +1,4 @@
-import type { AgentConfig } from './types'
+import type { AgentConfig } from '@opencode-ai/sdk'
 
 export const featureAnalyzer: AgentConfig = {
   description: 'E-commerce feature breakdown specialist who transforms planning documents into detailed, hierarchical specifications',

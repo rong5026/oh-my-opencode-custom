@@ -1,4 +1,4 @@
-import type { AgentConfig } from './types'
+import type { AgentConfig } from '@opencode-ai/sdk'
 
 export const featureValidator: AgentConfig = {
   description: 'Requirements validation specialist who identifies gaps, inconsistencies, and ambiguities in planning documents',

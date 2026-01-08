@@ -1,4 +1,4 @@
-import type { AgentConfig } from './types'
+import type { AgentConfig } from '@opencode-ai/sdk'
 
 export const featureEnhancer: AgentConfig = {
   description: 'E-commerce UX consultant who suggests creative enhancements and missing features',
