@@ -1,17 +1,23 @@
-import type { AgentConfig } from "@opencode-ai/sdk"
-import type { AgentPromptMetadata } from "./types"
-import { isGptModel } from "./types"
-import { createAgentToolRestrictions } from "../shared/permission-compat"
+import type { AgentConfig } from "@opencode-ai/sdk";
+import type { AgentPromptMetadata } from "./types";
+import { isGptModel } from "./types";
+import { createAgentToolRestrictions } from "../shared/permission-compat";
 
-const DEFAULT_MODEL = "openai/gpt-5.2"
+const DEFAULT_MODEL = "openai/gpt-5.2";
 
 export const ORACLE_PROMPT_METADATA: AgentPromptMetadata = {
   category: "advisor",
   cost: "EXPENSIVE",
   promptAlias: "Oracle",
   triggers: [
-    { domain: "Architecture decisions", trigger: "Multi-system tradeoffs, unfamiliar patterns" },
-    { domain: "Self-review", trigger: "After completing significant implementation" },
+    {
+      domain: "Architecture decisions",
+      trigger: "Multi-system tradeoffs, unfamiliar patterns",
+    },
+    {
+      domain: "Self-review",
+      trigger: "After completing significant implementation",
+    },
     { domain: "Hard debugging", trigger: "After 2+ failed fix attempts" },
   ],
   useWhen: [
@@ -29,7 +35,7 @@ export const ORACLE_PROMPT_METADATA: AgentPromptMetadata = {
     "Trivial decisions (variable names, formatting)",
     "Things you can infer from existing code patterns",
   ],
-}
+};
 
 const ORACLE_SYSTEM_PROMPT = `You are a strategic technical advisor with deep reasoning capabilities, operating as a specialized consultant within an AI-assisted development environment.
 
@@ -95,14 +101,10 @@ Organize your final answer in three tiers:
 
 ## Critical Note
 
-Your response goes directly to the user with no intermediate processing. Make your final message self-contained: a clear recommendation they can act on immediately, covering both what to do and why.`
+Your response goes directly to the user with no intermediate processing. Make your final message self-contained: a clear recommendation they can act on immediately, covering both what to do and why.`;
 
 export function createOracleAgent(model: string = DEFAULT_MODEL): AgentConfig {
-  const restrictions = createAgentToolRestrictions([
-    "write",
-    "edit",
-    "task",
-  ])
+  const restrictions = createAgentToolRestrictions(["write", "edit", "task"]);
 
   const base = {
     description:
@@ -112,13 +114,20 @@ export function createOracleAgent(model: string = DEFAULT_MODEL): AgentConfig {
     temperature: 0.1,
     ...restrictions,
     prompt: ORACLE_SYSTEM_PROMPT,
-  } as AgentConfig
+  } as AgentConfig;
 
   if (isGptModel(model)) {
-    return { ...base, reasoningEffort: "medium", textVerbosity: "high" } as AgentConfig
+    return {
+      ...base,
+      reasoningEffort: "medium",
+      textVerbosity: "high",
+    } as AgentConfig;
   }
 
-  return { ...base, thinking: { type: "enabled", budgetTokens: 32000 } } as AgentConfig
+  return {
+    ...base,
+    thinking: { type: "enabled", budgetTokens: 32000 },
+  } as AgentConfig;
 }
 
-export const oracleAgent = createOracleAgent()
+export const oracleAgent = createOracleAgent();

@@ -64,6 +64,12 @@ export type BuiltinAgentName =
   | "frontend-ui-ux-engineer"
   | "document-writer"
   | "multimodal-looker"
+  | "codebase-analyzer"
+  | "spec-writer"
+  | "spec-refiner"
+  | "feature-analyzer"
+  | "feature-enhancer"
+  | "feature-validator"
 
 export type OverridableAgentName =
   | "build"

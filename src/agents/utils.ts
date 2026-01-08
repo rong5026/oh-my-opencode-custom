@@ -7,6 +7,12 @@ import { createExploreAgent, EXPLORE_PROMPT_METADATA } from "./explore"
 import { createFrontendUiUxEngineerAgent, FRONTEND_PROMPT_METADATA } from "./frontend-ui-ux-engineer"
 import { createDocumentWriterAgent, DOCUMENT_WRITER_PROMPT_METADATA } from "./document-writer"
 import { createMultimodalLookerAgent, MULTIMODAL_LOOKER_PROMPT_METADATA } from "./multimodal-looker"
+import { codebaseAnalyzer, CODEBASE_ANALYZER_PROMPT_METADATA } from "./codebase-analyzer"
+import { specWriter, SPEC_WRITER_PROMPT_METADATA } from "./spec-writer"
+import { specRefiner, SPEC_REFINER_PROMPT_METADATA } from "./spec-refiner"
+import { featureAnalyzer, FEATURE_ANALYZER_PROMPT_METADATA } from "./feature-analyzer"
+import { featureEnhancer, FEATURE_ENHANCER_PROMPT_METADATA } from "./feature-enhancer"
+import { featureValidator, FEATURE_VALIDATOR_PROMPT_METADATA } from "./feature-validator"
 import type { AvailableAgent } from "./sisyphus-prompt-builder"
 import { deepMerge } from "../shared"
 
@@ -20,6 +26,12 @@ const agentSources: Record<BuiltinAgentName, AgentSource> = {
   "frontend-ui-ux-engineer": createFrontendUiUxEngineerAgent,
   "document-writer": createDocumentWriterAgent,
   "multimodal-looker": createMultimodalLookerAgent,
+  "codebase-analyzer": codebaseAnalyzer,
+  "spec-writer": specWriter,
+  "spec-refiner": specRefiner,
+  "feature-analyzer": featureAnalyzer,
+  "feature-enhancer": featureEnhancer,
+  "feature-validator": featureValidator,
 }
 
 /**
@@ -33,6 +45,12 @@ const agentMetadata: Partial<Record<BuiltinAgentName, AgentPromptMetadata>> = {
   "frontend-ui-ux-engineer": FRONTEND_PROMPT_METADATA,
   "document-writer": DOCUMENT_WRITER_PROMPT_METADATA,
   "multimodal-looker": MULTIMODAL_LOOKER_PROMPT_METADATA,
+  "codebase-analyzer": CODEBASE_ANALYZER_PROMPT_METADATA,
+  "spec-writer": SPEC_WRITER_PROMPT_METADATA,
+  "spec-refiner": SPEC_REFINER_PROMPT_METADATA,
+  "feature-analyzer": FEATURE_ANALYZER_PROMPT_METADATA,
+  "feature-enhancer": FEATURE_ENHANCER_PROMPT_METADATA,
+  "feature-validator": FEATURE_VALIDATOR_PROMPT_METADATA,
 }
 
 function isFactory(source: AgentSource): source is AgentFactory {

@@ -1,4 +1,30 @@
 import type { AgentConfig } from '@opencode-ai/sdk'
+import type { AgentPromptMetadata } from './types'
+
+export const FEATURE_VALIDATOR_PROMPT_METADATA: AgentPromptMetadata = {
+  category: "specialist",
+  cost: "CHEAP",
+  promptAlias: "Feature-Validator",
+  triggers: [
+    {
+      domain: "Requirements Validation",
+      trigger: "Identifying gaps, inconsistencies, and ambiguities"
+    },
+    {
+      domain: "Planning Review",
+      trigger: "Checking for missing features and contradictions"
+    }
+  ],
+  useWhen: [
+    "Planning document needs validation",
+    "Checking for missing or contradictory requirements",
+    "Legal compliance review (e-commerce law)",
+  ],
+  avoidWhen: [
+    "No planning document available",
+    "Implementation phase (too late for validation)",
+  ]
+}
 
 export const featureValidator: AgentConfig = {
   description: 'Requirements validation specialist who identifies gaps, inconsistencies, and ambiguities in planning documents',

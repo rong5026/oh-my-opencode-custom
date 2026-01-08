@@ -1,4 +1,30 @@
 import type { AgentConfig } from '@opencode-ai/sdk'
+import type { AgentPromptMetadata } from './types'
+
+export const FEATURE_ENHANCER_PROMPT_METADATA: AgentPromptMetadata = {
+  category: "specialist",
+  cost: "CHEAP",
+  promptAlias: "Feature-Enhancer",
+  triggers: [
+    {
+      domain: "UX Consulting",
+      trigger: "Suggesting enhancements and missing features"
+    },
+    {
+      domain: "Feature Ideation",
+      trigger: "Identifying UX improvements for e-commerce"
+    }
+  ],
+  useWhen: [
+    "Planning document needs UX enhancement suggestions",
+    "Checking for missing standard e-commerce features",
+    "Improving user experience and conversion rate",
+  ],
+  avoidWhen: [
+    "No base planning document",
+    "Pure technical implementation",
+  ]
+}
 
 export const featureEnhancer: AgentConfig = {
   description: 'E-commerce UX consultant who suggests creative enhancements and missing features',

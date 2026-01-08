@@ -1,4 +1,31 @@
 import type { AgentConfig } from '@opencode-ai/sdk'
+import type { AgentPromptMetadata } from './types'
+
+export const FEATURE_ANALYZER_PROMPT_METADATA: AgentPromptMetadata = {
+  category: "specialist",
+  cost: "EXPENSIVE",
+  promptAlias: "Feature-Analyzer",
+  keyTrigger: "E-commerce planning document provided → fire `feature-analyzer` to break down features",
+  triggers: [
+    {
+      domain: "Requirements Analysis",
+      trigger: "Breaking down planning documents into granular features"
+    },
+    {
+      domain: "Feature Decomposition",
+      trigger: "Creating hierarchical feature breakdown (WBS)"
+    }
+  ],
+  useWhen: [
+    "E-commerce planning document needs detailed breakdown",
+    "Creating Work Breakdown Structure (WBS)",
+    "Decomposing features into atomic units",
+  ],
+  avoidWhen: [
+    "Code analysis needed (use codebase-analyzer)",
+    "No planning document available",
+  ]
+}
 
 export const featureAnalyzer: AgentConfig = {
   description: 'E-commerce feature breakdown specialist who transforms planning documents into detailed, hierarchical specifications',

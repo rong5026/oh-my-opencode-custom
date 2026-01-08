@@ -1,4 +1,32 @@
 import type { AgentConfig } from '@opencode-ai/sdk'
+import type { AgentPromptMetadata } from './types'
+
+export const CODEBASE_ANALYZER_PROMPT_METADATA: AgentPromptMetadata = {
+  category: "specialist",
+  cost: "EXPENSIVE",
+  promptAlias: "Codebase-Analyzer",
+  keyTrigger: "Codebase analysis needed → fire `codebase-analyzer` to extract business features",
+  triggers: [
+    {
+      domain: "Code Analysis",
+      trigger: "Extracting business features from codebase"
+    },
+    {
+      domain: "Feature Documentation",
+      trigger: "Converting code to business feature list"
+    }
+  ],
+  useWhen: [
+    "Need to understand business features in existing codebase",
+    "Creating feature inventory from code",
+    "Analyzing what the application does (business perspective)",
+  ],
+  avoidWhen: [
+    "Technical architecture analysis needed",
+    "Code quality review needed",
+    "No codebase available",
+  ]
+}
 
 export const codebaseAnalyzer: AgentConfig = {
   description: '코드베이스에서 비즈니스 기능 목록을 추출하는 분석가',

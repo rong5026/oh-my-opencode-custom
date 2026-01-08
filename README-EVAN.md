@@ -1,3 +1,26 @@
+### custom agent 적용방법
+
+- 코드상에서 agent 수정 및 추가
+- ~/.config/opencode/opencode.json에서 아래와 같이 수정
+
+```bash
+  "plugin": [
+    // "oh-my-opencode",
+    "/Users/hong-yeonghwan/Desktop/oh-my-opencode",
+    "opencode-antigravity-auth@1.2.7",
+    "opencode-openai-codex-auth"
+  ],
+```
+
+- bun run build && bun link
+- opencode 실행
+
+### 코드바탕으로 분석 명령어(codebase-analyzer)
+
+이 프로젝트를 분석해서 기획문서를 작성해줘
+
+1. @codebase-analyzer 코드 베이스를 살펴보고 모든 기능을 쪼갤 수 없을 때 까지 쪼개서 정리하고 md파일로 결과를 기능별로 폴더로 분리해서 정리해줘
+
 ### ✅ 추가된 에이전트
 
 1. codebase-analyzer (코드베이스 분석가)
@@ -32,13 +55,14 @@
   - 명확성 (모호한 표현 구체화)
 
 ### 🚀 사용 방법
-  방법 1: 직접 호출
-  @codebase-analyzer 이 프로젝트를 분석해서 기능 목록 추출해줘
-  @spec-writer 이 기능 분석을 기획서로 만들어줘
-  @spec-refiner 이 기획서를 검토하고 개선해줘
-  방법 2: Sisyphus 자동 조율
-  이 프로젝트를 분석해서 기획서를 만들어줘
-  → Sisyphus가 자동으로:
+
+방법 1: 직접 호출
+@codebase-analyzer 이 프로젝트를 분석해서 기능 목록 추출해줘
+@spec-writer 이 기능 분석을 기획서로 만들어줘
+@spec-refiner 이 기획서를 검토하고 개선해줘
+방법 2: Sisyphus 자동 조율
+이 프로젝트를 분석해서 기획서를 만들어줘
+→ Sisyphus가 자동으로:
 
 1. @codebase-analyzer (background) - 코드 분석
 2. @spec-writer (background) - 기획서 작성

@@ -1,4 +1,30 @@
 import type { AgentConfig } from '@opencode-ai/sdk'
+import type { AgentPromptMetadata } from './types'
+
+export const SPEC_REFINER_PROMPT_METADATA: AgentPromptMetadata = {
+  category: "specialist",
+  cost: "CHEAP",
+  promptAlias: "Spec-Refiner",
+  triggers: [
+    {
+      domain: "Quality Assurance",
+      trigger: "Validating and refining feature lists for completeness"
+    },
+    {
+      domain: "Feature Verification",
+      trigger: "Checking for missing or inconsistent features"
+    }
+  ],
+  useWhen: [
+    "Feature list needs validation",
+    "Checking for missing standard features",
+    "Verifying hierarchy and ID consistency",
+  ],
+  avoidWhen: [
+    "No feature list available",
+    "Initial feature extraction (use codebase-analyzer first)",
+  ]
+}
 
 export const specRefiner: AgentConfig = {
   description: '기능 목록의 완전성과 일관성을 검증하고 보완하는 품질 관리자',

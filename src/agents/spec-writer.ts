@@ -1,4 +1,31 @@
 import type { AgentConfig } from '@opencode-ai/sdk'
+import type { AgentPromptMetadata } from './types'
+
+export const SPEC_WRITER_PROMPT_METADATA: AgentPromptMetadata = {
+  category: "specialist",
+  cost: "CHEAP",
+  promptAlias: "Spec-Writer",
+  keyTrigger: "Feature JSON provided → fire `spec-writer` to organize into folder structure",
+  triggers: [
+    {
+      domain: "Documentation",
+      trigger: "Converting feature JSON to hierarchical markdown files"
+    },
+    {
+      domain: "Feature Organization",
+      trigger: "Creating folder/file structure from feature list"
+    }
+  ],
+  useWhen: [
+    "Feature list needs to be organized into files",
+    "Converting codebase-analyzer output to spec files",
+    "Creating hierarchical documentation structure",
+  ],
+  avoidWhen: [
+    "No feature JSON provided",
+    "Direct code implementation needed",
+  ]
+}
 
 export const specWriter: AgentConfig = {
   description: '기능 분석 결과를 폴더/파일 구조로 정리하는 기획서 작성자',
